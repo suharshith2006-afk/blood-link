@@ -30,7 +30,7 @@ function animateCount(el, target, duration = 1200) {
 
 // Automatically pulls counts out of MySQL to keep homepage counters synced
 function refreshSystemTelemetry() {
-  fetch('get_stats.php')
+  fetch('https://suharshith.page.gd/blood-link/get_stats.php')
     .then(response => response.json())
     .then(data => {
       if (!data.success) return;
@@ -381,7 +381,7 @@ function initCentralizedLoginSystems() {
       formData.append("email", emailEl.value.trim());
       formData.append("password", passEl.value);
 
-      fetch('login.php', { method: 'POST', body: formData })
+      fetch('https://suharshith.page.gd/blood-link/login.php', { method: 'POST', body: formData })
         .then(res => res.json())
         .then(data => {
           alert(data.message);
@@ -545,7 +545,7 @@ function initContactUsModule() {
     formData.append("message", document.getElementById("ct-message")?.value || "");
 
     // Stream inputs down to our newly minted PHP processing file script
-    fetch('contact.php', {
+    fetch('https://suharshith.page.gd/blood-link/contact.php', {
       method: 'POST',
       body: formData
     })
@@ -650,7 +650,7 @@ function initSessionLogoutEngine() {
   if (!logoutBtn) return;
 
   logoutBtn.addEventListener("click", () => {
-    fetch('login.php', { method: 'POST', body: formData })
+    fetch('https://suharshith.page.gd/blood-link/login.php', { method: 'POST', body: formData })
         .then(res => res.json())
         .then(data => {
           alert(data.message);
@@ -665,7 +665,7 @@ function initSessionLogoutEngine() {
 }
 
 // Update your centralized login event listener to show the logout button on success
-// Inside your existing fetch('login.php') block where data.success is evaluated, add:
+// Inside your existing fetch('https://suharshith.page.gd/blood-link/login.php') block where data.success is evaluated, add:
 // document.getElementById("logoutBtn").style.display = "inline-flex";
 // document.querySelector('[data-target="login-panel"]').style.display = "none";
 // document.querySelector('[data-target="register-panel"]').style.display = "none";
@@ -688,7 +688,7 @@ function updateNavigationVisibilityStates(isLoggedIn) {
 
 function checkActiveUserSessionState() {
   // Query server right on load to see if cookies match an existing login record
-  fetch('check_session.php')
+  fetch('https://suharshith.page.gd/blood-link/check_session.php')
     .then(res => res.json())
     .then(data => {
       updateNavigationVisibilityStates(data.logged_in);
@@ -701,7 +701,7 @@ function initSessionLogoutEngine() {
   if (!logoutBtn) return;
 
   logoutBtn.addEventListener("click", () => {
-    fetch('logout.php')
+    fetch('https://suharshith.page.gd/blood-link/logout.php')
       .then(res => res.json())
       .then(data => {
         alert(data.message);
