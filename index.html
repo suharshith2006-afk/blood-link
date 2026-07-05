@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kakinada Blood Link — Voluntary Blood Donor Network</title>
+<meta name="description" content="Find and register blood donors across Kakinada, Andhra Pradesh. A student-run community service platform connecting donors, patients and hospitals." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner-top">
+    <a href="#" class="brand" data-target="home-panel">
+      <div class="brand-logo-container">
+        <svg viewBox="0 0 24 24" width="22" height="26" fill="currentColor">
+          <path d="M12 2.69C12 2.69 4 11.5 4 16c0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.5-8-13.31-8-13.31z"/>
+        </svg>
+      </div>
+      <span class="brand-text">
+        Kakinada Blood Link
+        <small>Community Service Project</small>
+      </span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="nav-button active" data-target="home-panel">Home</a>
+      <a href="#about" class="nav-button" data-target="about-panel">About</a>
+      <a href="#search-donors" class="nav-button" data-target="search-panel">Find Donors</a>
+      <a href="#emergency" class="nav-button" data-target="emergency-panel">Emergency</a>
+      <a href="#hospitals" class="nav-button" data-target="hospitals-panel">Hospitals</a>
+      <a href="#awareness" class="nav-button" data-target="awareness-panel">Awareness</a>
+      <a href="#contact" class="nav-button" data-target="contact-panel">Contact</a>
+      <a href="#dashboard" class="nav-button" data-target="dashboard-panel">Dashboard</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Theme Mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="4.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header-inner-bottom">
+    <div class="header-separated-actions">
+      <a href="#donor-login" id="navLoginBtn" class="btn-action btn-outline-action" data-target="login-panel">Donor Login</a>
+      <a href="#donor-register" id="navRegisterBtn" class="btn-action btn-solid" data-target="register-panel">Register</a>
+      <!-- Clean, stylized logout block button matching the navigation row formatting -->
+      <button id="logoutBtn" class="btn-action btn-outline-action" style="display: none; border-color: var(--crimson); color: var(--crimson);">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div id="home-panel" class="view-panel">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-split-grid">
+          
+          <div class="hero-content-left">
+            <p class="hero-tag">📍 Community Service Project · Kakinada</p>
+            <h1>Every drop counts.<br /><span>Save a life in Kakinada.</span></h1>
+            <p class="hero-copy">
+              Kakinada Blood Link is a student-led voluntary blood donor network connecting
+              patients, hospitals and donors across every corner of Kakinada — from
+              Jagannaickpur to Vakalapudi.
+            </p>
+            <div class="hero-ctas">
+              <a href="#donor-register" class="btn btn-primary btn-lg" data-target="register-panel">Become a Donor</a>
+              <a href="#search-donors" class="btn btn-outline btn-lg" data-target="search-panel">Find Blood</a>
+            </div>
+            <div class="hero-emergency-row">
+              <a href="#emergency" class="btn btn-urgent btn-lg" data-target="emergency-panel">Emergency Request</a>
+            </div>
+          </div>
+
+          <div class="hero-availability-right">
+            <div class="availability-floating-card">
+              <div class="card-header-row">
+                <h3>Live Blood Availability</h3>
+                <span class="card-sub-tag">Kakinada network</span>
+              </div>
+              <ul class="drop-grid" id="dropGrid" aria-label="Live blood availability by group">
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <dl class="hero-stats" id="heroStats">
+          <div class="stat">
+            <dd data-counter="0">0+</dd>
+            <dt>Donors</dt>
+          </div>
+          <div class="stat">
+            <dd data-counter="0">0+</dd>
+            <dt>Available</dt>
+          </div>
+          <div class="stat">
+            <dd data-counter="0">0+</dd>
+            <dt>Hospitals</dt>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="section-inner">
+        <p class="eyebrow">What we do</p>
+        <h2> A complete blood donor platform for Kakinada</h2>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><div style="width: 48px; height: 48px; background-color: #fce4ec; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#d91e63" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div>
+            <h3>Register as Donor</h3>
+            <p>Join Kakinada's voluntary donor registry in under 2 minutes.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><div style="width: 48px; height: 48px; background-color: #fce4ec; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d91e63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></div></div>
+            <h3>Search by Group &amp; Area</h3>
+            <p>Filter donors by blood group and Kakinada locality.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><div style="width: 48px; height: 48px; background-color: #fce4ec; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d91e63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18v-6a5 5 0 1 1 10 0v6"></path><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"></path><path d="M21 12h1"></path><path d="M18.5 4.5 18 5"></path><path d="M2 12h1"></path><path d="M12 2v1"></path><path d="m4.929 4.929.707.707"></path></svg></div></div>
+            <h3>Emergency Requests</h3>
+            <p>Post urgent needs — hospitals across Kakinada respond.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true"><div style="width: 48px; height: 48px; background-color: #fce4ec; border-radius: 8px; display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d91e63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div></div>
+            <h3>Eligibility Checker</h3>
+            <p>Instant check based on WHO donation guidelines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="localities" id="localities">
+      <div class="section-inner">
+        <p class="eyebrow">Kakinada coverage</p>
+        <h2>Serving every neighbourhood of Kakinada</h2>
+        <ul class="locality-list" id="localityList"></ul>
+      </div>
+    </section>
+  </div>
+
+  <div id="about-panel" class="view-panel hidden">
+    <section class="about-section" id="about">
+      <div class="section-inner">
+        <p class="eyebrow text-center">About the Project</p>
+        <h2 class="about-main-title text-center">Blood Donor Management System<br><span class="text-crimson">for Kakinada</span></h2>
+        <p class="about-subtitle text-center">A Community Service Project (CSP) developed by a 3rd year B.Tech CSE student to strengthen voluntary blood donation across Kakinada, Andhra Pradesh.</p>
+        
+        <div class="about-mission-split">
+          <div class="mission-text-left">
+            <h3>Our mission</h3>
+            <p>Every day, patients at hospitals in Kakinada — Government General Hospital, Apollo, Medicover, Trust and Hope — struggle to find matching blood on short notice. Kakinada Blood Link maintains a verified registry of local voluntary donors and matches them with genuine requests from patients and hospitals within the city.</p>
+            <p>The platform is intentionally focused on Kakinada. Every donor, every hospital, every request on this site is from within our city — so response times stay short and lives get saved.</p>
+          </div>
+
+          <div class="mission-cards-right">
+            <div class="mini-feature-card">
+              <span class="mini-card-icon text-crimson"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
+              <h4>Focused on Kakinada</h4>
+              <p>Only Kakinada donors, hospitals & requests.</p>
+            </div>
+            <div class="mini-feature-card">
+              <span class="mini-card-icon text-crimson"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span>
+              <h4>Voluntary donors</h4>
+              <p>Zero coercion. Zero payment. Pure service.</p>
+            </div>
+            <div class="mini-feature-card">
+              <span class="mini-card-icon text-crimson"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+              <h4>Verified data</h4>
+              <p>Donor eligibility & contact are checked.</p>
+            </div>
+            <div class="mini-feature-card">
+              <span class="mini-card-icon text-crimson"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg></span>
+              <h4>Student-led CSP</h4>
+              <p>Built as a 3rd year B.Tech CSE project.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="how-it-works-wrapper">
+          <h2 class="about-main-title text-center" style="margin-top: 5rem; margin-bottom: 3rem;">How it works</h2>
+          
+          <div class="process-steps-grid">
+            <div class="step-card">
+              <span class="step-number">01</span>
+              <h3>Register</h3>
+              <p>Donors sign up with their blood group and Kakinada area.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">02</span>
+              <h3>Get matched</h3>
+              <p>When a patient in your locality needs your group, we alert you.</p>
+            </div>
+            <div class="step-card">
+              <span class="step-number">03</span>
+              <h3>Donate & save</h3>
+              <p>Visit the nearest Kakinada hospital and complete the donation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="search-panel" class="view-panel hidden">
+    <section class="donor-search-section">
+      <div class="section-inner text-center">
+        <p class="eyebrow">Find a Donor</p>
+        <h2 class="search-main-title">Search donors across <span class="text-crimson">Kakinada</span></h2>
+        <p class="search-subtitle">Filter by blood group and locality — every donor listed is from Kakinada.</p>
+        
+        <div class="search-filter-card">
+          <form id="donorSearchForm" class="filter-flex-layout">
+            <div class="filter-group">
+              <label for="search-blood-group">BLOOD GROUP</label>
+              <select id="search-blood-group" name="blood_group">
+                <option value="All">All</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="search-area">AREA IN KAKINADA</label>
+              <select id="search-area" name="area">
+                <option value="All areas">All areas</option>
+              </select>
+            </div>
+
+            <div class="filter-checkbox-group">
+              <input type="checkbox" id="search-available" name="available_only" checked />
+              <label for="search-available">Available now</label>
+            </div>
+
+            <div class="filter-action-group">
+              <button type="button" id="searchQueryBtn" class="btn search-count-btn">
+                🔍 <span id="match-count-text">0 donors</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="search-results-grid" id="donorResultsGrid">
+          <div class="initial-placeholder">
+            <p>Connect your PHP backend server database to query active live records.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <div id="emergency-panel" class="view-panel hidden">
+    <div class="emergency-banner-hero">
+      <div class="banner-badge-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-siren" aria-hidden="true"><path d="M7 18v-6a5 5 0 1 1 10 0v6"></path><path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"></path><path d="M21 12h1"></path><path d="M18.5 4.5 18 5"></path><path d="M2 12h1"></path><path d="M12 2v1"></path><path d="m4.929 4.929.707.707"></path><path d="M12 12v6"></path></svg>
+      </div>
+      <h2>Emergency Blood Request</h2>
+      <p>Post an urgent need. Every registered voluntary donor in Kakinada matching the blood group is notified.</p>
+    </div>
+
+    <div class="section-inner emergency-split-workspace">
+      <div class="emergency-form-card">
+        <h3>Raise a request</h3>
+        <form id="emergencyRequestForm" class="stack-form-layout">
+          
+          <div class="form-field-item">
+            <label for="em-patient-name">Patient name</label>
+            <input type="text" id="em-patient-name" required placeholder="Enter patient full name" />
+          </div>
+
+          <div class="form-row-dual">
+            <div class="form-field-item">
+              <label for="em-blood-group">Blood Group</label>
+              <select id="em-blood-group" required>
+                <option value="">Select...</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+              </select>
+            </div>
+            <div class="form-field-item">
+              <label for="em-units">Units needed</label>
+              <input type="number" id="em-units" min="1" max="10" value="1" required />
+            </div>
+          </div>
+
+          <div class="form-field-item">
+            <label for="em-hospital">Hospital (Kakinada)</label>
+            <input type="text" id="em-hospital" required placeholder="Enter hospital name (e.g. GGH, Apollo)" />
+          </div>
+
+          <div class="form-field-item">
+            <label for="em-area">Area in Kakinada</label>
+            <select id="em-area" required>
+              <option value="">Select...</option>
+            </select>
+          </div>
+
+          <div class="form-field-item">
+            <label for="em-urgency">Urgency</label>
+            <select id="em-urgency" required>
+              <option value="High">High</option>
+              <option value="Critical">Critical (Immediate Support)</option>
+              <option value="Standard">Standard Routine</option>
+            </select>
+          </div>
+
+          <div class="form-field-item">
+            <label for="em-contact">Contact number</label>
+            <input type="tel" id="em-contact" required placeholder="+91 98XXXXXXXX" />
+          </div>
+
+          <div class="form-field-item">
+            <label for="em-notes">Additional note</label>
+            <textarea id="em-notes" placeholder="Any specific requirements or point of contact instructions..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit-emergency">Post Emergency Request</button>
+        </form>
+      </div>
+
+      <div class="emergency-feed-column">
+        <h3>Active requests in Kakinada</h3>
+        <div class="live-feed-placeholder" id="activeRequestsFeed">
+          <p>No active requests right now in Kakinada.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+ <!-- ==================== 5. HOSPITALS PANEL ==================== -->
+  <div id="hospitals-panel" class="view-panel hidden">
+    <section class="about-section">
+      <div class="section-inner text-center">
+        <p class="eyebrow">Hospital Network</p>
+        <h2>Partnering with Kakinada Care Providers</h2>
+        
+        <div class="initial-placeholder" style="max-width: 640px; margin: 3rem auto 0 auto; padding: 4rem 2rem;">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 1rem;">🏥</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem;">Coming Soon</h3>
+          <p style="color: var(--text-muted); line-height: 1.6; margin: 0;">
+            We are currently reaching out to local medical centers, private clinics, and the Government General Hospital (GGH) to securely link live supply parameters. Official integrations will be launched soon!
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+<!-- ==================== 5. AWARENESS PANEL ==================== -->
+  <div id="awareness-panel" class="view-panel hidden">
+    
+    <!-- Info Banner Grid -->
+    <section class="awareness-hero">
+      <div class="section-inner text-center">
+        <p class="eyebrow">Awareness</p>
+        <h2 class="about-main-title">Know before you <span class="text-crimson">donate</span></h2>
+        <p class="about-subtitle">Simple facts for every Kakinada resident.</p>
+        
+        <div class="awareness-facts-grid">
+          <div class="fact-card">
+            <span class="fact-icon">✨</span>
+            <h3>3 lives per donation</h3>
+            <p>One unit of blood is separated into red cells, plasma and platelets — helping up to three patients.</p>
+          </div>
+          <div class="fact-card">
+            <span class="fact-icon">✨</span>
+            <h3>Only 1% donate</h3>
+            <p>Less than 1% of India's population donates blood voluntarily. Kakinada can do better.</p>
+          </div>
+          <div class="fact-card">
+            <span class="fact-icon">✨</span>
+            <h3>38,000 donations/day</h3>
+            <p>India needs about 38,000 donations every day for surgery, trauma & thalassemia patients.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eligibility Checker Component -->
+    <section class="eligibility-section">
+      <div class="section-inner">
+        <div class="checker-header text-center">
+          <div class="info-badge-icon">ⓘ</div>
+          <h2 class="about-main-title">Eligibility Checker</h2>
+          <p class="about-subtitle" style="margin-bottom: 2rem;">Answer 5 quick questions.</p>
+        </div>
+
+        <div class="checker-card-container">
+          <form id="eligibilityForm" class="checker-custom-form">
+            <div class="checker-field-group">
+              <div class="checker-input-block">
+                <label for="el-age">Age</label>
+                <input type="number" id="el-age" required value="19" placeholder="e.g. 25" />
+              </div>
+              <div class="checker-input-block">
+                <label for="el-weight">Weight (kg)</label>
+                <input type="number" id="el-weight" required value="58" placeholder="e.g. 60" />
+              </div>
+            </div>
+
+            <div class="checker-field-group">
+              <div class="checker-input-block">
+                <label for="el-health">In good health?</label>
+                <select id="el-health" required>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="checker-input-block">
+                <label for="el-donated">Donated in last 3 months?</label>
+                <select id="el-donated" required>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="checker-input-block full-width-block">
+              <label for="el-tattoo">Tattoo/piercing in last 6 months?</label>
+              <select id="el-tattoo" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+
+            <div class="full-width-block" style="margin-top: 0.5rem;">
+              <button type="submit" class="btn btn-primary btn-lg checker-submit-btn">Check Eligibility</button>
+            </div>
+          </form>
+
+          <!-- Result Boxes -->
+          <div id="eligibilityResult" class="checker-result-box hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions Accordion (Now strictly inside the wrapper container) -->
+    <section class="faq-section">
+      <div class="section-inner">
+        <h2 class="about-main-title text-center" style="margin-bottom: 3rem;">Frequently asked questions</h2>
+        
+        <div class="faq-accordion-container">
+          <div class="faq-item">
+            <button type="button" class="faq-trigger">
+              <span>Who can donate blood?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-content">
+              <p>Any healthy person aged 18-65, weighing above 50kg, can donate blood every 3 months (men) or 4 months (women).</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger">
+              <span>Is blood donation safe?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-content">
+              <p>Yes. Sterile, single-use equipment is used at every licensed Kakinada hospital and camp.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger">
+              <span>How long does donation take?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-content">
+              <p>The entire process takes about 30-45 minutes; the actual donation is 8-10 minutes.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger">
+              <span>How often can I donate?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-content">
+              <p>Whole blood every 90 days for men and 120 days for women.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-trigger">
+              <span>Will I feel weak after donating?</span>
+              <span class="faq-arrow">▼</span>
+            </button>
+            <div class="faq-content">
+              <p>Most donors resume normal activity within an hour. Rest, hydrate and eat well after donating.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- CLOSE OF AWARENESS PANEL WRAPPER -->
+  <!-- ==================== Contact PANEL ==================== -->
+  <div id="contact-panel" class="view-panel hidden">
+    <section class="contact-page-section">
+      <div class="section-inner text-center">
+        <p class="eyebrow">We're in Kakinada</p>
+        <h2 class="about-main-title">Contact <span class="text-crimson">us</span></h2>
+        <p class="about-subtitle">Questions, hospital partnerships, awareness camp requests — reach out.</p>
+
+        <div class="contact-split-grid">
+          
+          <!-- Left Column: Info Cards Stack -->
+          <div class="contact-info-stack">
+            
+            <div class="info-strip-card">
+              <div class="strip-icon-box bg-light-pink text-crimson">📍</div>
+              <div class="strip-content">
+                <h3>Address</h3>
+                <p>Dept. of CSE, JNTUK<br>Jagannaickpur, Kakinada<br>Andhra Pradesh 533003</p>
+              </div>
+            </div>
+
+            <div class="info-strip-card">
+              <div class="strip-icon-box bg-light-pink text-crimson">📞</div>
+              <div class="strip-content">
+                <h3>Helpline (24×7)</h3>
+                <p>+91 884 235 0000<br>+91 98480 00000</p>
+              </div>
+            </div>
+
+            <div class="info-strip-card">
+              <div class="strip-icon-box bg-light-pink text-crimson">✉️</div>
+              <div class="strip-content">
+                <h3>Email</h3>
+                <p>help@kakinadabloodlink.in<br>csp@kakinadabloodlink.in</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Send Message Form -->
+          <div class="contact-form-container-card">
+            <h3>Send a message</h3>
+            <form id="contactDirectForm" class="contact-grid-form">
+              <div class="contact-field">
+                <input type="text" id="ct-name" required placeholder="Your name" />
+              </div>
+              <div class="contact-field">
+                <input type="email" id="ct-email" required placeholder="Email" />
+              </div>
+              <div class="contact-field">
+                <input type="tel" id="ct-phone" required placeholder="Phone (+91)" />
+              </div>
+              <div class="contact-field">
+                <input type="text" id="ct-subject" required placeholder="Subject" />
+              </div>
+              <div class="contact-field span-all-rows">
+                <textarea id="ct-message" rows="5" required placeholder="How can we help you in Kakinada?"></textarea>
+              </div>
+              <div class="contact-action-row">
+                <button type="submit" class="btn btn-primary contact-submit-btn">
+                  <span>🚀</span> Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <!-- ==================== 8. DASHBOARD PANEL ==================== -->
+  <div id="dashboard-panel" class="view-panel hidden">
+    <section class="dashboard-section">
+      <div class="section-inner">
+        
+        <!-- Header Ribbon -->
+        <div class="dashboard-header-block">
+          <p class="eyebrow" style="margin:0;">Dashboard</p>
+          <h2>Kakinada Blood Network</h2>
+          <p class="dashboard-sub">Live donor registrations, blood group distribution and hospital stock.</p>
+        </div>
+
+        <!-- 4-Column Summary Cards Row -->
+        <div class="dash-metrics-row">
+          <div class="dash-stat-card">
+            <div class="stat-meta">
+              <label>TOTAL DONORS</label>
+              <strong id="dash-stat-donors">2</strong>
+            </div>
+            <div class="stat-icon-badge">👥</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-meta">
+              <label>HOSPITALS</label>
+              <strong id="dash-stat-hospitals">0</strong>
+            </div>
+            <div class="stat-icon-badge">🏥</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-meta">
+              <label>UNITS IN STOCK</label>
+              <strong id="dash-stat-stock">0</strong>
+            </div>
+            <div class="stat-icon-badge">🩸</div>
+          </div>
+          <div class="dash-stat-card">
+            <div class="stat-meta">
+              <label>BLOOD GROUPS</label>
+              <strong id="dash-stat-groups">2</strong>
+            </div>
+            <div class="stat-icon-badge">❤️</div>
+          </div>
+        </div>
+
+        <!-- Charts Split Row Layout -->
+        <div class="dash-charts-split-grid">
+          
+          <!-- Left Grid: Line Chart for Monthly Trends -->
+          <div class="chart-card-box">
+            <div class="chart-title-area">
+              <h3>Donor Registrations</h3>
+              <p>Monthly trend · this year</p>
+            </div>
+            <div class="svg-chart-container">
+              <svg viewBox="0 0 600 300" class="line-chart-svg">
+                <!-- Background grid lines -->
+                <line x1="50" y1="50" x2="570" y2="50" stroke="#f1ebd9" stroke-dasharray="4,4" />
+                <line x1="50" y1="125" x2="570" y2="125" stroke="#f1ebd9" stroke-dasharray="4,4" />
+                <line x1="50" y1="200" x2="570" y2="200" stroke="#f1ebd9" stroke-dasharray="4,4" />
+                <line x1="50" y1="275" x2="570" y2="275" stroke="#e7ddd0" />
+                
+                <!-- Y-Axis Labels -->
+                <text x="35" y="55" class="axis-label-text">4</text>
+                <text x="35" y="130" class="axis-label-text">3</text>
+                <text x="35" y="205" class="axis-label-text">2</text>
+                <text x="35" y="280" class="axis-label-text">0</text>
+
+                <!-- Trend Line Path (Plotted via sample data points) -->
+                <path d="M 50,275 L 93,275 L 136,275 L 180,275 L 223,275 L 266,275 L 310,125 L 353,275 L 396,275 L 440,275 L 483,275 L 526,275" 
+                      fill="none" stroke="#a8192e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                
+                <!-- Data Nodes -->
+                <circle cx="50" cy="275" r="4" fill="#a8192e" /><circle cx="93" cy="275" r="4" fill="#a8192e" />
+                <circle cx="136" cy="275" r="4" fill="#a8192e" /><circle cx="180" cy="275" r="4" fill="#a8192e" />
+                <circle cx="223" cy="275" r="4" fill="#a8192e" /><circle cx="266" cy="275" r="4" fill="#a8192e" />
+                <circle cx="310" cy="125" r="5" fill="#a8192e" /><circle cx="353" cy="275" r="4" fill="#a8192e" />
+                <circle cx="396" cy="275" r="4" fill="#a8192e" /><circle cx="440" cy="275" r="4" fill="#a8192e" />
+                <circle cx="483" cy="275" r="4" fill="#a8192e" /><circle cx="526" cy="275" r="4" fill="#a8192e" />
+
+                <!-- X-Axis Month Marks -->
+                <text x="50" y="295" class="axis-label-text" text-anchor="middle">Jan</text>
+                <text x="93" y="295" class="axis-label-text" text-anchor="middle">Feb</text>
+                <text x="136" y="295" class="axis-label-text" text-anchor="middle">Mar</text>
+                <text x="180" y="295" class="axis-label-text" text-anchor="middle">Apr</text>
+                <text x="223" y="295" class="axis-label-text" text-anchor="middle">May</text>
+                <text x="266" y="295" class="axis-label-text" text-anchor="middle">Jun</text>
+                <text x="310" y="295" class="axis-label-text" text-anchor="middle">Jul</text>
+                <text x="353" y="295" class="axis-label-text" text-anchor="middle">Aug</text>
+                <text x="396" y="295" class="axis-label-text" text-anchor="middle">Sep</text>
+                <text x="440" y="295" class="axis-label-text" text-anchor="middle">Oct</text>
+                <text x="483" y="295" class="axis-label-text" text-anchor="middle">Nov</text>
+                <text x="526" y="295" class="axis-label-text" text-anchor="middle">Dec</text>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Right Grid: Donut Chart for Distribution Share -->
+          <div class="chart-card-box">
+            <div class="chart-title-area">
+              <h3>Blood Group Distribution</h3>
+              <p>Share of registered donors</p>
+            </div>
+            <div class="donut-chart-flex-wrapper">
+              <svg viewBox="0 0 200 200" class="donut-chart-svg">
+                <!-- Half segment arc matching 1 donor (50%) -->
+                <circle cx="100" cy="100" r="60" fill="transparent" stroke="#a8192e" stroke-width="24" 
+                        stroke-dasharray="188.5 377" stroke-dashoffset="0" />
+                <!-- Counter segment matching 1 donor (50%) -->
+                <circle cx="100" cy="100" r="60" fill="transparent" stroke="#c97a2b" stroke-width="24" 
+                        stroke-dasharray="188.5 377" stroke-dashoffset="-188.5" />
+              </svg>
+              <div class="chart-legends-row">
+                <span class="legend-indicator text-crimson">● A+</span>
+                <span class="legend-indicator text-amber">● O+</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Full Width Component: Bar Chart for Stock Metrics -->
+        <div class="chart-card-box bar-chart-box" style="margin-top: 2rem;">
+          <div class="chart-title-area">
+            <h3>Hospital Blood Stock</h3>
+            <p>Total units available by group</p>
+          </div>
+          <div class="bar-chart-scroll-axis">
+            <svg viewBox="0 0 800 240" class="bar-chart-svg">
+              <line x1="60" y1="40" x2="760" y2="40" stroke="#f1ebd9" stroke-dasharray="4,4" />
+              <line x1="60" y1="100" x2="760" y2="100" stroke="#f1ebd9" stroke-dasharray="4,4" />
+              <line x1="60" y1="160" x2="760" y2="160" stroke="#f1ebd9" stroke-dasharray="4,4" />
+              <line x1="60" y1="210" x2="760" y2="210" stroke="#e7ddd0" />
+
+              <text x="40" y="45" class="axis-label-text">4</text>
+              <text x="40" y="105" class="axis-label-text">3</text>
+              <text x="40" y="165" class="axis-label-text">2</text>
+              <text x="40" y="215" class="axis-label-text">0</text>
+
+              <g class="bar-interactive-group">
+                <rect x="90" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="110" y="228" class="axis-label-text" text-anchor="middle">A+</text>
+                <foreignObject x="70" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>A+</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="175" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="195" y="228" class="axis-label-text" text-anchor="middle">A-</text>
+                <foreignObject x="155" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>A-</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="260" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="280" y="228" class="axis-label-text" text-anchor="middle">B+</text>
+                <foreignObject x="240" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>B+</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="345" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="365" y="228" class="axis-label-text" text-anchor="middle">B-</text>
+                <foreignObject x="325" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>B-</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="430" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="450" y="228" class="axis-label-text" text-anchor="middle">O+</text>
+                <foreignObject x="410" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>O+</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="515" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="535" y="228" class="axis-label-text" text-anchor="middle">O-</text>
+                <foreignObject x="495" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>O-</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="600" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="620" y="228" class="axis-label-text" text-anchor="middle">AB+</text>
+                <foreignObject x="580" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>AB+</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+              <g class="bar-interactive-group">
+                <rect x="685" y="210" width="40" height="0" class="stock-bar-node fill-crimson" />
+                <text x="705" y="228" class="axis-label-text" text-anchor="middle">AB-</text>
+                <foreignObject x="665" y="150" width="80" height="50" class="svg-tooltip-box"><div class="custom-tooltip"><strong>AB-</strong><small class="text-crimson">Units: 0</small></div></foreignObject>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  <!-- ==================== 9. DONOR LOGIN PANEL (Matches image_1c7221.png) ==================== -->
+  <div id="login-panel" class="view-panel hidden">
+    <section class="login-view-section">
+      <div class="login-central-card">
+        <!-- Floating Red Blood Drop Badge -->
+        
+        <div class="brand-logo-container">
+        <svg viewBox="0 0 24 24" width="22" height="26" fill="currentColor">
+          <path d="M12 2.69C12 2.69 4 11.5 4 16c0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.5-8-13.31-8-13.31z"></path>
+        </svg>
+      </div
+        
+        <h2>Donor Login</h2>
+        <p>Access your Kakinada donor account.</p>
+
+        <form id="donorLoginForm" class="login-stack-form">
+          <div class="login-field-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" required placeholder="Enter your email address" />
+          </div>
+          
+          <div class="login-field-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" required placeholder="Enter account security password" />
+          </div>
+          
+          <button type="submit" class="btn btn-primary login-action-submit-btn">Login</button>
+        </form>
+
+        <div class="login-footer-redirect">
+          New donor? <a href="#donor-register" onclick="document.querySelector('[data-target=\'register-panel\']').click()">Register here</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- ==================== 6. DONOR REGISTRATION PANEL ==================== -->
+  <div id="register-panel" class="view-panel hidden">
+    <section class="register">
+      <div class="section-inner">
+        <p class="eyebrow">Join the Network</p>
+        <h2>Donor Registration Form</h2>
+        <p class="section-lede">Fill out your detailed profile below to be included in Kakinada's voluntary donor network.</p>
+
+        <form id="registerForm" class="register-form" novalidate>
+          <div class="form-row">
+            <div class="field" id="field-reg-name">
+              <label for="reg-name">Full Name</label>
+              <input type="text" id="reg-name" name="name" placeholder="Enter full name" />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-reg-group">
+              <label for="reg-group">Blood Group</label>
+              <select id="reg-group" name="bloodGroup">
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field" id="field-reg-age">
+              <label for="reg-age">Age</label>
+              <input type="number" id="reg-age" name="age" placeholder="Min 18 - Max 65" />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-reg-gender">
+              <label for="reg-gender">Gender</label>
+              <select id="reg-gender" name="gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field" id="field-reg-email">
+              <label for="reg-email">Email Address</label>
+              <input type="email" id="reg-email" name="email" placeholder="name@example.com" />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-reg-phone">
+              <label for="reg-phone">Mobile Number</label>
+              <input type="tel" id="reg-phone" name="phone" placeholder="10-digit number" />
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <!-- Locality dropdown and the requested Password input side-by-side -->
+          <div class="form-row">
+            <div class="field" id="field-reg-locality">
+              <label for="reg-locality">Locality / Area</label>
+              <select id="reg-locality" name="locality">
+                <option value="">Select Locality</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-reg-password">
+              <label for="reg-password">Create Account Password</label>
+              <input type="password" id="reg-password" name="password" placeholder="Create a strong security password" />
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="field field-full" id="field-reg-address">
+            <label for="reg-address">Full Residential Address</label>
+            <textarea id="reg-address" name="address" placeholder="Enter complete address detail"></textarea>
+            <div class="field-error"></div>
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="reg-consent" />
+            <label for="reg-consent">I authorize Kakinada Blood Link to display my group and contact info during verified medical emergency search queries.</label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg">Submit Registration</button>
+            <div id="formStatus" class="form-status"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div id="login-panel" class="view-panel hidden">
+    <div class="section-inner">
+      <h2>User Session Login</h2>
+      <p>Secure authentication portal for registered Kakinada donors goes here...</p>
+    </div>
+  </div>
+
+  <div id="dashboard-panel" class="view-panel hidden">
+    <div class="section-inner">
+      <h2>System Management Analytics</h2>
+      <p>Administrative panels, collection database statistics, and ledger monitoring go here...</p>
+    </div>
+  </div>
+  <!-- ==================== RECIPIENT REGISTRATION PANEL ==================== -->
+  <div id="recipient-panel" class="view-panel hidden">
+    <section class="register">
+      <div class="section-inner">
+        <p class="eyebrow">For Patients &amp; Families</p>
+        <h2>Recipient Registration</h2>
+        <p class="section-lede">Register to request donors from Kakinada's network.</p>
+
+        <form id="recipientRegisterForm" class="register-form" novalidate>
+          <div class="form-row">
+            <div class="field" id="field-rec-name">
+              <label for="rec-name">Full Name</label>
+              <input type="text" id="rec-name" name="recipientName" placeholder="Enter full name" />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-rec-email">
+              <label for="rec-email">Email Address</label>
+              <input type="email" id="rec-email" name="recipientEmail" placeholder="name@example.com" />
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field" id="field-rec-phone">
+              <label for="rec-phone">Mobile Number</label>
+              <input type="tel" id="rec-phone" name="recipientPhone" placeholder="10-digit number" />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-rec-group">
+              <label for="rec-group">Required Blood Group</label>
+              <select id="rec-group" name="requiredBloodGroup">
+                <option value="">Select Blood Group</option>
+                <option value="A+">A+</option><option value="A-">A-</option>
+                <option value="B+">B+</option><option value="B-">B-</option>
+                <option value="O+">O+</option><option value="O-">O-</option>
+                <option value="AB+">AB+</option><option value="AB-">AB-</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field" id="field-rec-area">
+              <label for="rec-area">Locality / Area in Kakinada</label>
+              <select id="rec-area" name="recipientArea">
+                <option value="">Select Locality</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+            <!-- Changed Preferred Hospital from a dropdown select component into a custom Input Textbox -->
+            <div class="field" id="field-rec-hospital">
+              <label for="rec-hospital">Preferred Hospital</label>
+              <input type="text" id="rec-hospital" name="preferredHospital" placeholder="Enter hospital name" />
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field" id="field-rec-password">
+              <label for="rec-password">Create Account Password</label>
+              <input type="password" id="rec-password" name="recipientPassword" placeholder="Create a strong security password" />
+              <div class="field-error"></div>
+            </div>
+            <!-- Kept empty grid slot to perfectly mirror image layout alignment tracks -->
+            <div class="field placeholder-hidden-slot"></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; border-radius: var(--radius-sm) !important;">Register as Recipient</button>
+            <div id="recipientFormStatus" class="form-status"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+  <!-- ==================== RECIPIENT LOGIN PANEL (image_29a0e8.png) ==================== -->
+  <div id="recipient-login-panel" class="view-panel hidden">
+    <section class="login-view-section">
+      <div class="login-central-card">
+        <!-- Floating Amber Heart/Handshake Icon Bubble from image_29a0e8.png -->
+        <div style="width: 56px; height: 56px; background-color: #d4af37; border-radius: 12px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-handshake" aria-hidden="true"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"></path></svg>
+        </div>
+        
+        <h2>Recipient Login</h2>
+        <p>Access your Kakinada recipient account.</p>
+
+        <form id="recipientLoginForm" class="login-stack-form" novalidate>
+          <div class="login-field-group">
+            <label for="rec-login-email">Email</label>
+            <input type="email" id="rec-login-email" required placeholder="name@example.com" />
+            <div class="field-error" style="color: #c0392b; font-size: 0.78rem; margin-top: 0.25rem;"></div>
+          </div>
+          
+          <div class="login-field-group">
+            <label for="rec-login-password">Password</label>
+            <input type="password" id="rec-login-password" required placeholder="Enter password" />
+            <div class="field-error" style="color: #c0392b; font-size: 0.78rem; margin-top: 0.25rem;"></div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary login-action-submit-btn">Login</button>
+        </form>
+
+        <div class="login-footer-redirect">
+          New here? <a href="#recipient-register" onclick="event.preventDefault(); document.querySelector('[data-target=\'recipient-panel\']').click()">Register</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-drop" aria-hidden="true"></span>
+      <div>
+        <strong>Kakinada Blood Link</strong>
+        <p>A student-led CSP initiative connecting voluntary blood donors with patients across Kakinada, Andhra Pradesh.</p>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#home" onclick="document.querySelector('[data-target=\'home-panel\']').click()">Home</a>
+      <a href="#about" onclick="document.querySelector('[data-target=\'about-panel\']').click()">About</a>
+      <a href="#search-donors" onclick="document.querySelector('[data-target=\'search-panel\']').click()">Find Donors</a>
+      <a href="#emergency" onclick="document.querySelector('[data-target=\'emergency-panel\']').click()">Emergency</a>
+      <a href="#hospitals" onclick="document.querySelector('[data-target=\'hospitals-panel\']').click()">Hospitals</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>For Users</h4>
+      <a href="#donor-register" onclick="document.querySelector('[data-target=\'register-panel\']').click()">Donor Registration</a>
+      <a href="#recipient-register" data-target="recipient-panel">Recipient Registration</a>
+      <a href="#donor-login" onclick="document.querySelector('[data-target=\'login-panel\']').click()">Donor Login</a>
+      <a href="#recipient-login" data-target="recipient-login-panel">Recipient Login</a>
+      <a href="#dashboard" onclick="document.querySelector('[data-target=\'dashboard-panel\']').click()">Admin Dashboard</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>Dept. of CSE, JNTUK<br />Jagannaickpur, Kakinada<br />Andhra Pradesh 533003</p>
+      <p>Helpline: <a href="tel:+918842350000">+91 884 235 0000</a></p>
+      <p>Email: <a href="mailto:help@kakinadabloodlink.in">help@kakinadabloodlink.in</a></p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Kakinada Blood Link · Community Service Project · 3rd Year B.Tech CSE
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const navItems = document.querySelectorAll("[data-target]");
+  navItems.forEach(item => {
+    item.addEventListener("click", function(e) {
+      const targetPanelId = this.getAttribute("data-target");
+      if (targetPanelId) {
+        e.preventDefault();
+        document.querySelectorAll(".view-panel").forEach(p => p.classList.add("hidden"));
+        document.getElementById(targetPanelId).classList.remove("hidden");
+        document.querySelectorAll(".main-nav a").forEach(l => l.classList.remove('active'));
+        const activeLink = document.querySelector(`.main-nav a[data-target="${targetPanelId}"]`);
+        if (activeLink) activeLink.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
